@@ -9,7 +9,7 @@ export default function HomePage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="home-page">
         <HeroSection />
         <WorkShowcase />
         <AiExploreSection />

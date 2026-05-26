@@ -17,7 +17,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
     >
       <Link
         href={`/projects/${project.slug}`}
-        className="flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-surface transition-all duration-300 hover:border-black/10 hover:shadow-lg dark:hover:border-white/15"
+        className="flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-surface transition-all duration-300 hover:border-black/10 hover:shadow-lg"
       >
         <div className="relative aspect-[4/3] overflow-hidden bg-background">
           <Image

@@ -1,6 +1,6 @@
 /** 与首页 Navbar 共用的胶囊导航样式 */
 export const navPillStyles =
-  "rounded-full border border-white/40 bg-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.08)] backdrop-blur-xl backdrop-saturate-150 dark:border-white/10 dark:bg-white/10 dark:shadow-[0_8px_32px_rgba(0,0,0,0.35)]";
+  "rounded-full border border-white/40 bg-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.08)] backdrop-blur-xl backdrop-saturate-150";
 
 /** 项目页返回按钮 — 深色背景（cinematic 等，不依赖 dark: 类） */
 export const navPillDarkStyles =

@@ -1,0 +1,170 @@
+{
+  "slug": "gaode-content-ecosystem",
+  "title": "高德内容化建设",
+  "subtitle": "从工具地图到内容地图，探索属于地图场景的内容生态",
+  "description": "围绕高德从“工具化”向“内容化”的战略转型，探索地图场景下的内容生产与消费体系。通过地图内容工具、地图大片模板与 AI 生成能力，构建属于地图产品的内容表达方式，让内容创作真正留在高德内部。",
+  "excerpt": "构建地图场景下的内容生产体系，探索地图产品的第二增长曲线。",
+  "year": "2023 - 2025",
+  "category": "Content Ecosystem",
+  "tags": [
+    "Content Design",
+    "Creator Tools",
+    "Map Experience",
+    "AI Workflow",
+    "Growth Design"
+  ],
+  "image": "/images/projects/gaode-content/hero/cover.jpg",
+  "imageAspect": "1504/1128",
+  "imageAlt": "高德内容化建设项目封面",
+  "theme": {
+    "scheme": "dark",
+    "presentation": "cinematic",
+    "background": "#000000",
+    "foreground": "rgba(255, 255, 255, 0.88)",
+    "muted": "rgba(255, 255, 255, 0.45)",
+    "border": "rgba(255, 255, 255, 0.1)",
+    "surface": "rgba(41, 41, 41, 0.35)",
+    "accent": "#ff6cd2",
+    "gradientStart": "#acd0ff",
+    "gradientMid": "#5641ff",
+    "gradientEnd": "#ff6cd2",
+    "mesh": "cinematic"
+  },
+  "featured": true,
+  "role": "Lead Product Designer",
+  "timeline": "18 months",
+  "team": [
+    "Product Designer",
+    "Product Manager",
+    "Content Strategy",
+    "Growth Team",
+    "Engineering Team"
+  ],
+  "challenge": "高德正在经历从“工具化”向“内容化”的战略转型。虽然拥有极强的工具属性与海量用户，但用户长期处于“搜索 → 导航 → 离开”的使用模式，缺乏停留与内容消费。相比小红书、大众点评等内容平台，高德真正的差异化优势在于“地理位置信息”，但这些地图能力始终没有被真正转化成适合内容创作的表达工具。",
+  "approach": "通过用户调研，我们发现很多创作者其实已经在使用地图进行内容创作，但整个链路极其割裂。用户需要在高德截图后，再切换到第三方软件进行修图、画线与打标，创作成本极高。基于这一洞察，我提出核心设计策略：“让内容创作留在高德内部”。通过设计驱动，将复杂地图数据转化为直观、高颜值、低门槛的可视化表达，建立地图内容生产与消费体系。",
+  "outcome": "项目推动高德地图从工具属性进一步向内容生态演进，建立地图内容生产体系，并形成地图内容模板、创作工具与 AI 内容生成能力。",
+  "metrics": [
+    {
+      "label": "优质内容生产",
+      "value": "9w+"
+    },
+    {
+      "label": "内容卡 CTR 提升",
+      "value": "+31%"
+    },
+    {
+      "label": "地图内容模板",
+      "value": "36"
+    },
+    {
+      "label": "内容生产效率提升",
+      "value": "+200%"
+    },
+    {
+      "label": "创新专利",
+      "value": "4 项"
+    },
+    {
+      "label": "创新提案",
+      "value": "2 项"
+    }
+  ],
+  "highlights": [
+    "提出“让内容创作留在高德内部”设计策略",
+    "从 0-1 搭建地图内容生产体系",
+    "建立地图大片与路线表达模板",
+    "探索 AI 驱动地图内容生成",
+    "沉淀地图内容设计系统"
+  ],
+  "stack": [
+    "Figma",
+    "Content Strategy",
+    "AI Workflow",
+    "Growth Design",
+    "Visual Systems"
+  ],
+  "sections": [
+    {
+      "id": "hero",
+      "title": "高德内容化建设",
+      "description": "从工具地图到内容地图，探索属于地图场景的内容生态。",
+      "image": "/images/projects/gaode-content/hero/cover.jpg",
+      "layout": "hero"
+    },
+    {
+      "id": "background-challenge",
+      "title": "寻找地图产品的“第二曲线”",
+      "description": "为了探索地图产品增长的“第二曲线”。相比传统内容平台，高德真正的差异化优势在于“地理位置信息”，但这些地图能力始终没有真正转化成适合内容创作的表达工具。在项目中，我主要负责高德内容生产体系的 0-1 搭建，包括评价体系、地图大片生产与地图内容创作工具建设，通过降低创作门槛、增强内容反馈与提升视觉表达，逐步建立地图场景下的内容生产闭环。",
+      "image": "/images/projects/gaode-content/background-challenge/background-challenge-2.jpg",
+      "imageAspect": "2936/1454",
+      "imageFit": "contain",
+      "layout": "full"
+    },
+    {
+      "id": "insight-strategy",
+      "title": "让内容创作留在高德内部",
+      "description": "通过调研我们发现，很多用户其实已经在使用地图进行内容创作，但整个创作流程极其割裂。为了生成一张带路线的地图封面，博主通常需要在高德截图后，再切换到第三方软件进行修图、画线与打标，整个创作链路复杂且成本极高。基于这一洞察，我们提出核心设计策略：让地图本身成为一种内容表达工具。通过设计驱动，将复杂地图数据转化为直观、高颜值、低门槛的可视化表达。",
+      "image": "/images/projects/gaode-content/insight-strategy/insight-strategy.jpg",
+      "imageAspect": "2936/1302",
+      "imageFit": "contain",
+      "layout": "full"
+    },
+    {
+      "id": "map-poster",
+      "title": "重新定义地图内容封面",
+      "description": "传统地图截图缺乏内容吸引力。因此，我们开始探索如何让地图本身成为一种更具视觉表达力的内容载体。通过路线生成、地图视觉模板、动态布局与地点信息结构化，用户能够快速生成探店路线、旅行攻略与城市探索等地图大片内容。",
+      "image": "/images/projects/gaode-content/map-poster/map-poster.jpg",
+      "imageAspect": "2936/1604",
+      "imageFit": "contain",
+      "layout": "full"
+    },
+    {
+      "id": "creator-tools",
+      "title": "降低地图内容创作门槛",
+      "description": "为了让更多普通用户参与地图内容创作，我们重新设计地图内容工具。通过路线自动生成、地点智能推荐、地图模板与结构化编辑能力，让用户无需复杂设计能力，也能够快速生成高质量地图内容。",
+      "image": "/images/projects/gaode-content/creator-tools/creator-tools.jpg",
+      "imageAspect": "2936/1604",
+      "imageFit": "contain",
+      "layout": "full"
+    },
+    {
+      "id": "ai-content-generation",
+      "title": "AI 开始参与地图内容生产",
+      "description": "除了内容工具，我们也开始探索 AI 如何参与地图内容生成。基于地点信息、内容标签、视觉规则与地图结构，系统能够自动生成地图封面、路线表达与内容视觉风格，让地图内容生产进一步标准化与规模化。",
+      "images": [
+        {
+          "image": "/images/projects/gaode-content/ai-content-generation/ai-content.jpg",
+          "imageAspect": "2936/1492",
+          "imageFit": "contain",
+          "alt": "AI 地图内容生产：底图信息提取、爆款标题生成与结构化路线"
+        },
+        {
+          "image": "/images/projects/gaode-content/ai-content-generation/ai-content-generation.jpg",
+          "imageAspect": "2936/1604",
+          "imageFit": "contain",
+          "alt": "AI 参与地图内容生产界面展示"
+        }
+      ],
+      "layout": "full"
+    },
+    {
+      "id": "outcomes",
+      "title": "项目结果",
+      "description": "项目推动高德地图从工具属性进一步向内容生态演进，并建立地图场景下的内容生产闭环。",
+      "image": "/images/projects/gaode-content/outcomes/outcomes.jpg",
+      "imageAspect": "2936/1302",
+      "imageFit": "contain",
+      "layout": "metrics"
+    },
+    {
+      "id": "reflection",
+      "title": "Reflection",
+      "description": "地图真正的价值，不只是导航。它更像是一种连接人与地点、内容与空间、线上与线下体验的新型媒介。当地图开始拥有内容表达能力后，它也逐渐从“效率工具”转向一种新的生活方式入口。",
+      "layout": "text"
+    }
+  ],
+  "nextProject": {
+    "title": "AI Workflow Lab",
+    "slug": "ai-workflow-lab"
+  }
+}

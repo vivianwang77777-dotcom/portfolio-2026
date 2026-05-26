@@ -1,0 +1,449 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fafafa;
+  --foreground: #1d1d1f;
+  --muted: #86868b;
+  --border: rgba(0, 0, 0, 0.06);
+  --surface: #ffffff;
+  --accent: #0071e3;
+  --gradient-start: #e8f0fe;
+  --gradient-mid: #f3e8ff;
+  --gradient-end: #fce7f3;
+  --nav-height: 4rem;
+}
+
+/* 浅色项目页固定使用浅色 token，避免系统深色模式覆盖光晕色 */
+.project-detail-page:not(.project-page--dark):not(.project-cinematic) {
+  color-scheme: light;
+  --background: #fafafa;
+  --foreground: #1d1d1f;
+  --muted: #86868b;
+  --border: rgba(0, 0, 0, 0.06);
+  --surface: #ffffff;
+  --accent: #0071e3;
+  --gradient-start: #e8f0fe;
+  --gradient-mid: #f3e8ff;
+  --gradient-end: #fce7f3;
+}
+
+/* 项目详情等二级页无顶栏，取消导航占位 */
+.project-detail-page {
+  --nav-height: 0;
+  --back-nav-offset: 6rem;
+}
+
+@media (min-width: 640px) {
+  .project-detail-page {
+    --back-nav-offset: 6.75rem;
+  }
+}
+
+/* 为固定返回按钮预留顶部空间（仅作用于 Hero 内容网格，不产生整块黑底） */
+.project-hero-content {
+  padding-top: var(--back-nav-offset);
+  background: transparent;
+}
+
+/* Cinematic 页：内容层不遮挡固定背景光晕，且禁止裁切溢出光晕 */
+.project-cinematic .relative.z-10,
+.project-cinematic header,
+.project-cinematic article,
+.project-cinematic section {
+  background-color: transparent;
+}
+
+.project-cinematic,
+.project-cinematic .relative.z-10,
+.project-cinematic .project-hero-shell {
+  overflow: visible;
+}
+
+.project-cinematic .mx-auto.max-w-6xl {
+  background-color: transparent;
+}
+
+.project-cinematic .project-hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-surface: var(--surface);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-serif: var(--font-instrument), ui-serif, Georgia, serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-futura: futura;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #000000;
+    --foreground: #f5f5f7;
+    --muted: #a1a1a6;
+    --border: rgba(255, 255, 255, 0.08);
+    --surface: #1c1c1e;
+    --accent: #2997ff;
+    --gradient-start: #0a1628;
+    --gradient-mid: #1a1028;
+    --gradient-end: #1a0a14;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 20%, transparent);
+  color: var(--foreground);
+}
+
+.gradient-mesh {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -20%, var(--gradient-start), transparent),
+    radial-gradient(ellipse 60% 40% at 100% 0%, var(--gradient-mid), transparent),
+    radial-gradient(ellipse 50% 30% at 0% 50%, var(--gradient-end), transparent);
+}
+
+/* 深色项目页光晕 */
+.gradient-mesh-dark {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -20%, var(--gradient-start), transparent),
+    radial-gradient(ellipse 65% 45% at 100% 0%, var(--gradient-mid), transparent),
+    radial-gradient(ellipse 55% 35% at 0% 45%, var(--gradient-end), transparent),
+    radial-gradient(ellipse 70% 50% at 80% 100%, var(--gradient-mid), transparent);
+}
+
+.project-page--dark {
+  color-scheme: dark;
+}
+
+/* Cinematic case study — Arounda 紫粉蓝渐变 */
+.project-cinematic {
+  color-scheme: dark;
+  --foreground: rgba(255, 255, 255, 0.88);
+  --muted: rgba(255, 255, 255, 0.45);
+  /* 背景由 CinematicBackground 渲染，main 必须透明才能透出光晕 */
+  background-color: transparent;
+}
+
+body:has(main.project-cinematic) {
+  background-color: #000000;
+}
+
+/* 纯黑底 + 右上紫 / 左下粉 氛围光（参考图布局） */
+.cinematic-page-gradient {
+  background: #000000;
+}
+
+.cinematic-ambient-bg {
+  background:
+    radial-gradient(
+      ellipse 80% 65% at 90% 6%,
+      rgba(86, 65, 255, 0.48) 0%,
+      rgba(86, 65, 255, 0.2) 38%,
+      transparent 66%
+    ),
+    radial-gradient(
+      ellipse 65% 58% at 10% 88%,
+      rgba(255, 173, 231, 0.28) 0%,
+      rgba(255, 173, 231, 0.1) 42%,
+      transparent 68%
+    ),
+    radial-gradient(
+      ellipse 45% 40% at 30% 60%,
+      rgba(255, 173, 231, 0.06) 0%,
+      transparent 70%
+    ),
+    #000000;
+}
+
+/* 叠加光斑，增强右上/左下氛围 */
+.cinematic-glow-orbs {
+  background:
+    radial-gradient(
+      circle at 88% 8%,
+      rgba(86, 65, 255, 0.42) 0%,
+      rgba(86, 65, 255, 0.16) 30%,
+      transparent 62%
+    ),
+    radial-gradient(
+      circle at 12% 92%,
+      rgba(255, 173, 231, 0.24) 0%,
+      rgba(255, 173, 231, 0.08) 34%,
+      transparent 64%
+    );
+}
+
+.cinematic-title-gradient {
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.96) 0%,
+    rgba(243, 232, 255, 0.88) 34%,
+    rgba(255, 173, 231, 0.8) 54%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.cinematic-text-body {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* gaode-content：标题下正文 — 小一号、regular、50% 不透明度 */
+.project-slug-gaode-content-ecosystem .section-description {
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.625;
+  color: rgb(255 255 255 / 0.5) !important;
+}
+
+.project-slug-gaode-content-ecosystem .section-description.cinematic-text-body,
+.project-slug-gaode-content-ecosystem .section-description.cinematic-text-secondary {
+  color: rgb(255 255 255 / 0.5) !important;
+}
+
+@media (min-width: 640px) {
+  .project-slug-gaode-content-ecosystem .section-description {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .project-slug-gaode-content-ecosystem .section-description {
+    font-size: 1.125rem;
+  }
+}
+
+.cinematic-text-secondary {
+  color: var(--cinematic-secondary, rgba(255, 255, 255, 0.72));
+}
+
+.cinematic-text-muted {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.cinematic-vignette {
+  background: radial-gradient(
+    ellipse 80% 70% at 50% 50%,
+    transparent 40%,
+    rgba(4, 8, 17, 0.85) 100%
+  );
+}
+
+/* 轻暗角：仅压四角，避免在首屏与正文之间形成横向色带 */
+.cinematic-vignette-soft {
+  background:
+    radial-gradient(
+      ellipse 90% 70% at 0% 0%,
+      transparent 55%,
+      rgba(0, 0, 0, 0.28) 100%
+    ),
+    radial-gradient(
+      ellipse 90% 70% at 100% 0%,
+      transparent 55%,
+      rgba(0, 0, 0, 0.28) 100%
+    ),
+    radial-gradient(
+      ellipse 80% 50% at 50% 100%,
+      transparent 60%,
+      rgba(0, 0, 0, 0.22) 100%
+    );
+}
+
+.cinematic-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+.cinematic-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black, transparent);
+}
+
+/* Hero 右上紫 / 左下粉，与全页背景一致 */
+.cinematic-hero-mesh {
+  background:
+    radial-gradient(
+      ellipse 75% 60% at 100% 0%,
+      rgba(86, 65, 255, 0.34) 0%,
+      rgba(86, 65, 255, 0.12) 42%,
+      transparent 66%
+    ),
+    radial-gradient(
+      ellipse 58% 50% at 0% 100%,
+      rgba(250, 177, 228, 0.14) 0%,
+      transparent 68%
+    );
+}
+
+/* Hero 底部向下一节过渡的淡粉晕染 */
+.cinematic-hero-bottom-fade {
+  background: radial-gradient(
+    ellipse 70% 55% at 50% 100%,
+    rgba(255, 173, 231, 0.14) 0%,
+    rgba(255, 173, 231, 0.05) 38%,
+    transparent 72%
+  );
+}
+
+.glass-card {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+}
+
+.cinematic-image-frame {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 24px 64px rgba(0, 0, 0, 0.45);
+}
+
+.cinematic-metric-card {
+  box-shadow: 0 0 40px rgba(26, 16, 40, 0.4);
+}
+
+.cinematic-metric-card:hover {
+  box-shadow: 0 0 48px rgba(255, 108, 210, 0.15);
+  border-color: rgba(255, 108, 210, 0.22);
+}
+
+/* 淡蓝右上 + 淡绿左上 + 淡蓝底部 — 用于 gaode-poi 等项目页 */
+.gradient-mesh-soft-sky {
+  background:
+    radial-gradient(ellipse 72% 48% at 88% 6%, var(--gradient-mid), transparent),
+    radial-gradient(ellipse 56% 44% at 10% 10%, var(--gradient-end), transparent),
+    radial-gradient(ellipse 64% 42% at 50% 108%, var(--gradient-start), transparent),
+    radial-gradient(
+      ellipse 90% 55% at 50% -12%,
+      color-mix(in srgb, var(--gradient-start) 35%, transparent),
+      transparent
+    );
+}
+
+/* 全页滚动时的 soft-sky 延展，沿用头部三色渐变 */
+.gradient-mesh-page-soft-sky {
+  background:
+    radial-gradient(ellipse 72% 48% at 88% 6%, var(--gradient-mid), transparent),
+    radial-gradient(ellipse 56% 44% at 10% 10%, var(--gradient-end), transparent),
+    radial-gradient(ellipse 64% 42% at 50% 108%, var(--gradient-start), transparent),
+    radial-gradient(
+      ellipse 90% 55% at 50% -12%,
+      color-mix(in srgb, var(--gradient-start) 35%, transparent),
+      transparent
+    ),
+    radial-gradient(ellipse 55% 40% at 85% 55%, var(--gradient-mid), transparent),
+    radial-gradient(ellipse 48% 36% at 12% 72%, var(--gradient-end), transparent),
+    radial-gradient(ellipse 60% 44% at 50% 100%, var(--gradient-start), transparent);
+}
+
+.gradient-mesh-page {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -20%, var(--gradient-start), transparent),
+    radial-gradient(ellipse 60% 40% at 100% 0%, var(--gradient-mid), transparent),
+    radial-gradient(ellipse 50% 30% at 0% 50%, var(--gradient-end), transparent),
+    radial-gradient(ellipse 55% 40% at 80% 85%, var(--gradient-mid), transparent),
+    radial-gradient(ellipse 50% 35% at 20% 100%, var(--gradient-end), transparent);
+}
+
+.glass {
+  background: color-mix(in srgb, var(--surface) 72%, transparent);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+.balance-pal-case {
+  font-family: "ChillRoundM", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif !important;
+}
+
+.balance-pal-case :where(p, span, div, a, button, li) {
+  font-family: "ChillRoundM", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif !important;
+}
+
+.balance-pal-case :is(h1, h2, h3) {
+  font-family: "Comic Sans MS", "Comic Sans", "ChillRoundM", "PingFang SC", cursive !important;
+  color: rgba(31, 41, 55, 0.9) !important;
+}
+
+.balance-pal-case .balance-pal-ds-ui,
+.balance-pal-case .balance-pal-ds-ui :where(p, span, div, a, button, li, h1, h2, h3, h4, label, input, textarea) {
+  font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif !important;
+}
+
+.balance-pal-case .balance-pal-ds-ui .ds-h1-en {
+  font-family: "Comic Sans MS", "Comic Sans", cursive !important;
+}
+
+.balance-pal-card {
+  border: 1px solid rgba(255, 255, 255, 0.86);
+  background: rgba(255, 255, 255, 0.58);
+  box-shadow: 0 18px 52px rgba(31, 41, 55, 0.045);
+  backdrop-filter: blur(22px) saturate(145%);
+  -webkit-backdrop-filter: blur(22px) saturate(145%);
+}
+
+.balance-pal-card-soft {
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.44);
+  box-shadow: 0 12px 34px rgba(31, 41, 55, 0.035);
+  backdrop-filter: blur(18px) saturate(135%);
+  -webkit-backdrop-filter: blur(18px) saturate(135%);
+}
+
+.balance-pal-tint {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.text-gradient-hero {
+  background-image: linear-gradient(
+    120deg,
+    rgba(255, 89, 171, 1) 0%,
+    rgba(0, 157, 255, 1) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@media (prefers-color-scheme: dark) {
+  .text-gradient-hero {
+    background-image: linear-gradient(
+      120deg,
+      rgba(255, 89, 171, 1) 0%,
+      rgba(0, 157, 255, 1) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}

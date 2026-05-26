@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 赋能的 UX 工作流</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;700;900&display=swap');
+        
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+        pre, code {
+            font-family: 'Fira Code', 'JetBrains Mono', monospace;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #05070a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #06b6d4;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-[#05070a] text-slate-300 antialiased selection:bg-cyan-500/30 pb-20">
+
+    <!-- Background Decor -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div class="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-cyan-500/5 blur-[120px] rounded-full"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-purple-600/5 blur-[120px] rounded-full"></div>
+        <div class="absolute inset-0 bg-[linear-gradient(rgba(6,182,212,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(6,182,212,0.01)_1px,transparent_1px)] bg-[size:32px_32px]"></div>
+    </div>
+
+    <div class="relative z-10 max-w-[1200px] mx-auto px-6 pt-16">
+        <!-- Header Section -->
+        <header class="mb-12">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-full flex items-center">
+                    <i data-lucide="cpu" class="w-4 h-4 text-cyan-400 mr-2"></i>
+                    <span class="text-[10px] text-cyan-400 font-mono tracking-widest uppercase italic">AI-driven product design process AI</span>
+                </div>
+            </div>
+            <h1 class="text-5xl lg:text-7xl font-black text-white tracking-tighter mb-4 leading-none">
+                AI 赋能的 <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500">UX 工作流</span>
+            </h1>
+            <p class="text-slate-500 text-lg max-w-3xl leading-relaxed font-light mb-12">
+                核心把从发现问题到交付表达的全过程串起来，形成一套可复用的思维框架。
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+                <div class="bg-cyan-500/5 border border-white/5 rounded-2xl p-5 group hover:border-white/10 transition-all">
+                    <div class="text-cyan-400 font-mono text-[10px] font-black mb-2 flex items-center tracking-tighter">
+                        <i data-lucide="sparkles" class="w-3 h-3 mr-2"></i> PHASE 01
+                    </div>
+                    <p class="text-xs text-slate-300 font-medium leading-relaxed">建立业务背景，明确任务</p>
+                </div>
+                <div class="bg-blue-500/5 border border-white/5 rounded-2xl p-5 group hover:border-white/10 transition-all">
+                    <div class="text-blue-400 font-mono text-[10px] font-black mb-2 flex items-center tracking-tighter">
+                        <i data-lucide="sparkles" class="w-3 h-3 mr-2"></i> PHASE 02
+                    </div>
+                    <p class="text-xs text-slate-300 font-medium leading-relaxed">收敛问题，转化为验证假设</p>
+                </div>
+                <div class="bg-purple-500/5 border border-white/5 rounded-2xl p-5 group hover:border-white/10 transition-all">
+                    <div class="text-purple-400 font-mono text-[10px] font-black mb-2 flex items-center tracking-tighter">
+                        <i data-lucide="sparkles" class="w-3 h-3 mr-2"></i> PHASE 03
+                    </div>
+                    <p class="text-xs text-slate-300 font-medium leading-relaxed">产出架构、逻辑与视觉细化</p>
+                </div>
+                <div class="bg-pink-500/5 border border-white/5 rounded-2xl p-5 group hover:border-white/10 transition-all">
+                    <div class="text-pink-400 font-mono text-[10px] font-black mb-2 flex items-center tracking-tighter">
+                        <i data-lucide="sparkles" class="w-3 h-3 mr-2"></i> PHASE 04
+                    </div>
+                    <p class="text-xs text-slate-300 font-medium leading-relaxed">对比验证，得到可信结论</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Tab Navigation -->
+        <div class="w-full border-b border-white/5 mb-12 pb-8">
+            <div class="flex flex-row justify-between items-stretch gap-4 w-full">
+                <button onclick="switchTab(0)" id="tab-btn-0" class="tab-btn flex-1 flex items-center justify-start space-x-4 px-6 py-5 rounded-3xl border transition-all duration-300 bg-slate-900 border-cyan-500/50 text-white shadow-[0_0_30px_rgba(6,182,212,0.15)]">
+                    <div class="tab-icon text-cyan-400 shrink-0"><i data-lucide="search" class="w-6 h-6"></i></div>
+                    <div class="text-left overflow-hidden">
+                        <div class="font-black text-xs md:text-sm uppercase tracking-wider truncate">发现与定义</div>
+                        <div class="text-[9px] md:text-[10px] opacity-40 font-mono tracking-tighter truncate">Discover & Define</div>
+                    </div>
+                </button>
+                <button onclick="switchTab(1)" id="tab-btn-1" class="tab-btn flex-1 flex items-center justify-start space-x-4 px-6 py-5 rounded-3xl border transition-all duration-300 bg-transparent border-slate-800 text-slate-500 hover:border-slate-700 hover:text-slate-300">
+                    <div class="tab-icon text-slate-600 shrink-0"><i data-lucide="lightbulb" class="w-6 h-6"></i></div>
+                    <div class="text-left overflow-hidden">
+                        <div class="font-black text-xs md:text-sm uppercase tracking-wider truncate">架构与逻辑</div>
+                        <div class="text-[9px] md:text-[10px] opacity-40 font-mono tracking-tighter truncate">Ideate</div>
+                    </div>
+                </button>
+                <button onclick="switchTab(2)" id="tab-btn-2" class="tab-btn flex-1 flex items-center justify-start space-x-4 px-6 py-5 rounded-3xl border transition-all duration-300 bg-transparent border-slate-800 text-slate-500 hover:border-slate-700 hover:text-slate-300">
+                    <div class="tab-icon text-slate-600 shrink-0"><i data-lucide="palette" class="w-6 h-6"></i></div>
+                    <div class="text-left overflow-hidden">
+                        <div class="font-black text-xs md:text-sm uppercase tracking-wider truncate">视觉与构建</div>
+                        <div class="text-[9px] md:text-[10px] opacity-40 font-mono tracking-tighter truncate">Experience Design</div>
+                    </div>
+                </button>
+                <button onclick="switchTab(3)" id="tab-btn-3" class="tab-btn flex-1 flex items-center justify-start space-x-4 px-6 py-5 rounded-3xl border transition-all duration-300 bg-transparent border-slate-800 text-slate-500 hover:border-slate-700 hover:text-slate-300">
+                    <div class="tab-icon text-slate-600 shrink-0"><i data-lucide="check-circle" class="w-6 h-6"></i></div>
+                    <div class="text-left overflow-hidden">
+                        <div class="font-black text-xs md:text-sm uppercase tracking-wider truncate">验证与迭代</div>
+                        <div class="text-[9px] md:text-[10px] opacity-40 font-mono tracking-tighter truncate">Validate & Iterate</div>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content Containers -->
+        <div id="tab-content-0" class="tab-content space-y-12">
+            <!-- Case 1 -->
+            <section class="bg-[#0a0d12] border border-slate-800/60 rounded-[2.5rem] p-8 lg:p-12 relative overflow-hidden group/card">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-cyan-500/[0.02] blur-3xl rounded-full translate-x-20 -translate-y-20"></div>
+                <div class="flex flex-col md:flex-row justify-between items-start gap-6 mb-12">
+                    <div class="space-y-4">
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-white/5 border border-white/10 text-slate-400 text-[10px] font-black uppercase tracking-widest rounded-lg">探索/验证新方向</span>
+                            <span class="px-3 py-1 bg-cyan-400/5 border border-cyan-400/20 text-cyan-400 text-[10px] font-black uppercase tracking-widest rounded-lg flex items-center"><i data-lucide="layers" class="w-3 h-3 mr-2"></i> 需求拷问器与系统架构师</span>
+                        </div>
+                        <h3 class="text-4xl font-black text-white tracking-tight">情况一：0-1 项目 (MVP 定义)</h3>
+                    </div>
+                    <div class="p-4 bg-slate-900/50 rounded-2xl border border-slate-800 text-slate-700 group-hover/card:text-cyan-500/50 transition-colors">
+                        <i data-lucide="search" class="w-8 h-8"></i>
+                    </div>
+                </div>
+                <div class="grid lg:grid-cols-12 gap-12">
+                    <div class="lg:col-span-5">
+                        <h4 class="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-black mb-6 flex items-center"><i data-lucide="target" class="w-3.5 h-3.5 mr-2 text-cyan-500"></i> 操作策略与核心步骤</h4>
+                        <div class="bg-white/[0.02] p-6 rounded-2xl border-l-4 border-cyan-500 mb-8">
+                            <p class="text-sm text-slate-200 leading-relaxed font-medium italic">“此时由于没有线上数据，重点在于“被动回答”。利用AI对你进行追问，逼出你自己都没想清楚的功能边界和成功标准。”</p>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="group/step p-4 rounded-xl hover:bg-white/[0.02] transition-colors border border-transparent hover:border-white/5">
+                                <div class="text-xs font-black text-cyan-400 mb-2 font-mono flex items-center"><span class="w-1 h-3 bg-cyan-500 mr-2 rounded-full"></span> 步骤 i. 需求澄清</div>
+                                <p class="text-sm text-slate-400 leading-relaxed group-hover/step:text-slate-300">告知AI你想做的产品雏形，让其扮演“需求拷问器”。通过AI的追问，明确目标用户、核心场景和功能边界。</p>
+                            </div>
+                            <div class="group/step p-4 rounded-xl hover:bg-white/[0.02] transition-colors border border-transparent hover:border-white/5">
+                                <div class="text-xs font-black text-cyan-400 mb-2 font-mono flex items-center"><span class="w-1 h-3 bg-cyan-500 mr-2 rounded-full"></span> 步骤 ii. 定义 MVP最小可行性产品和完整需求文档</div>
+                                <p class="text-sm text-slate-400 leading-relaxed group-hover/step:text-slate-300">让AI作为顶级架构师，基于追问结果定义产品的MVP版本并输出严谨可开发的PRD。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-7">
+                        <h4 class="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-black mb-6 flex items-center"><i data-lucide="terminal" class="w-3.5 h-3.5 mr-2 text-purple-500"></i> 生产级 PROMPT 代码库</h4>
+                        <div class="space-y-6">
+                            <div class="relative group/prompt">
+                                <div class="flex items-center justify-between px-5 py-3 bg-[#11161d] border-t border-x border-slate-800 rounded-t-2xl">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-2.5 h-2.5 rounded-full bg-red-500/20"></div><div class="w-2.5 h-2.5 rounded-full bg-yellow-500/20"></div><div class="w-2.5 h-2.5 rounded-full bg-green-500/20"></div>
+                                        <span class="ml-3 text-[10px] font-mono text-slate-600 uppercase tracking-widest">prompt_logic_1.md</span>
+                                    </div>
+                                    <button onclick="copyPrompt(this)" class="flex items-center space-x-2 px-3 py-1 bg-cyan-500/10 hover:bg-cyan-500 text-cyan-400 hover:text-black rounded-lg text-[10px] font-black transition-all uppercase tracking-tighter">
+                                        <i data-lucide="clipboard-check" class="w-3 h-3"></i><span>复制指令</span>
+                                    </button>
+                                </div>
+                                <div class="bg-[#010409] p-6 sm:p-8 border border-slate-800 rounded-b-2xl shadow-2xl relative">
+                                    <pre class="text-sm sm:text-[15px] text-slate-300 font-mono leading-[1.7] whitespace-pre-wrap break-words">一、你现在是需求拷问器，不是执行者。我要做的产品是：[一句话描述]
+请开始追问我，直到所有关键问题清晰：-目标用户是谁 -核心使用场景 -功能边界(有什么、没什么) -成功标准。追问完毕后，输出一份需求总结。</pre>
+                                </div>
+                            </div>
+                            <div class="relative group/prompt">
+                                <div class="flex items-center justify-between px-5 py-3 bg-[#11161d] border-t border-x border-slate-800 rounded-t-2xl">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-2.5 h-2.5 rounded-full bg-red-500/20"></div><div class="w-2.5 h-2.5 rounded-full bg-yellow-500/20"></div><div class="w-2.5 h-2.5 rounded-full bg-green-500/20"></div>
+                                        <span class="ml-3 text-[10px] font-mono text-slate-600 uppercase tracking-widest">prompt_logic_2.md</span>
+                                    </div>
+                                    <button onclick="copyPrompt(this)" class="flex items-center space-x-2 px-3 py-1 bg-cyan-500/10 hover:bg-cyan-500 text-cyan-400 hover:text-black rounded-lg text-[10px] font-black transition-all uppercase tracking-tighter">
+                                        <i data-lucide="clipboard-check" class="w-3 h-3"></i><span>复制指令</span>
+                                    </button>
+                                </div>
+                                <div class="bg-[#010409] p-6 sm:p-8 border border-slate-800 rounded-b-2xl shadow-2xl relative">
+                                    <pre class="text-sm sm:text-[15px] text-slate-300 font-mono leading-[1.7] whitespace-pre-wrap break-words">二、你是一名「顶级产品架构师+UX专家+AI产品设计师+技术负责人」。你的任务是基于我提供的回答，定义这个产品的MVP版本，并生成一份完整、专业、结构严谨、可直接用于开发的PRD。</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Case 2 -->
+            <section class="bg-[#0a0d12] border border-slate-800/60 rounded-[2.5rem] p-8 lg:p-12 relative overflow-hidden group/card">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-cyan-500/[0.02] blur-3xl rounded-full translate-x-20 -translate-y-20"></div>
+                <div class="flex flex-col md:flex-row justify-between items-start gap-6 mb-12">
+                    <div class="space-y-4">
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-white/5 border border-white/10 text-slate-400 text-[10px] font-black uppercase tracking-widest">修复/提升型项目</span>
+                            <span class="px-3 py-1 bg-cyan-400/5 border border-cyan-400/20 text-cyan-400 text-[10px] font-black uppercase tracking-widest rounded-lg flex items-center"><i data-lucide="layers" class="w-3 h-3 mr-2"></i> 数据诊断器与逻辑补齐器</span>
+                        </div>
+                        <h3 class="text-4xl font-black text-white tracking-tight">情况二：基于线上优化 (根因定位)</h3>
+                    </div>
+                    <div class="p-4 bg-slate-900/50 rounded-2xl border border-slate-800 text-slate-700 group-hover/card:text-cyan-500/50 transition-colors">
+                        <i data-lucide="search" class="w-8 h-8"></i>
+                    </div>
+                </div>
+                <div class="grid lg:grid-cols-12 gap-12">
+                    <div class="lg:col-span-5">
+                        <h4 class="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-black mb-6 flex items-center"><i data-lucide="target" class="w-3.5 h-3.5 mr-2 text-cyan-500"></i> 操作策略与核心步骤</h4>
+                        <div class="bg-white/[0.02] p-6 rounded-2xl border-l-4 border-cyan-500 mb-8">
+                            <p class="text-sm text-slate-200 leading-relaxed font-medium italic">“识别 UI “症状” (Symptoms)，并将其抽象为设计挑战。”</p>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="group/step p-4 rounded-xl hover:bg-white/[0.02] transition-colors border border-transparent hover:border-white/5">
+                                <div class="text-xs font-black text-cyan-400 mb-2 font-mono flex items-center"><span class="w-1 h-3 bg-cyan-500 mr-2 rounded-full"></span> 步骤 i. 识别 UI 症状</div>
+                                <p class="text-sm text-slate-400 leading-relaxed group-hover/step:text-slate-300">上传截图，让AI从任务、场景、决策成本出发拆解体验问题。</p>
+                            </div>
+                            <div class="group/step p-4 rounded-xl hover:bg-white/[0.02] transition-colors border border-transparent hover:border-white/5">
+                                <div class="text-xs font-black text-cyan-400 mb-2 font-mono flex items-center"><span class="w-1 h-3 bg-cyan-500 mr-2 rounded-full"></span> 步骤 ii. 驱动逻辑链</div>
+                                <p class="text-sm text-slate-400 leading-relaxed group-hover/step:text-slate-300">建立“业务背景=业务问题+市场趋势+机会判断”的推导逻辑。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-7">
+                        <h4 class="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-black mb-6 flex items-center"><i data-lucide="terminal" class="w-3.5 h-3.5 mr-2 text-purple-500"></i> 生产级 PROMPT 代码库</h4>
+                        <div class="space-y-6">
+                            <div class="relative group/prompt">
+                                <div class="flex items-center justify-between px-5 py-3 bg-[#11161d] border-t border-x border-slate-800 rounded-t-2xl">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-2.5 h-2.5 rounded-full bg-red-500/20"></div><div class="w-2.5 h-2.5 rounded-full bg-yellow-500/20"></div><div class="w-2.5 h-2.5 rounded-full bg-green-500/20"></div>
+                                        <span class="ml-3 text-[10px] font-mono text-slate-600 uppercase tracking-widest">prompt_logic_1.md</span>
+                                    </div>
+                                    <button onclick="copyPrompt(this)" class="flex items-center space-x-2 px-3 py-1 bg-cyan-500/10 hover:bg-cyan-500 text-cyan-400 hover:text-black rounded-lg text-[10px] font-black transition-all uppercase tracking-tighter">
+                                        <i data-lucide="clipboard-check" class="w-3 h-3"></i><span>复制指令</span>
+                                    </button>
+                                </div>
+                                <div class="bg-[#010409] p-6 sm:p-8 border border-slate-800 rounded-b-2xl shadow-2xl relative">
+                                    <pre class="text-sm sm:text-[15px] text-slate-300 font-mono leading-[1.7] whitespace-pre-wrap break-words">你是一位资深 UX/产品体验专家，请不要只做表层视觉评价，而是必须从「用户真实任务+使用场景+交互优先级+决策成本」出发，系统性分析一个界面的体验问题。拆解这个页面为什么这样设计、哪里有问题、问题为什么严重、应该如何改。</pre>
+                                </div>
+                            </div>
+                            <div class="relative group/prompt">
+                                <div class="flex items-center justify-between px-5 py-3 bg-[#11161d] border-t border-x border-slate-800 rounded-t-2xl">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-2.5 h-2.5 rounded-full bg-red-500/20"></div><div class="w-2.5 h-2.5 rounded-full bg-yellow-500/20"></div><div class="w-2.5 h-2.5 rounded-full bg-green-500/20"></div>
+                                        <span class="ml-3 text-[10px] font-mono text-slate-600 uppercase tracking-widest">prompt_logic_2.md</span>
+                                    </div>
+                                    <button onclick="copyPrompt(this)" class="flex items-center space-x-2 px-3 py-1 bg-cyan-500/10 hover:bg-cyan-500 text-cyan-400 hover:text-black rounded-lg text-[10px] font-black transition-all uppercase tracking-tighter">
+                                        <i data-lucide="clipboard-check" class="w-3 h-3"></i><span>复制指令</span>
+                                    </button>
+                                </div>
+                                <div class="bg-[#010409] p-6 sm:p-8 border border-slate-800 rounded-b-2xl shadow-2xl relative">
+                                    <pre class="text-sm sm:text-[15px] text-slate-300 font-mono leading-[1.7] whitespace-pre-wrap break-words">你是一位资深 UX/产品体验专家，具备业务分析能力。请根据我提供的背景，推导清晰、可量化的业务目标，并拆解对应的体验目标（体验目标=设计目标+衡量指标）。</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Case 3 -->
+            <section class="bg-[#0a0d12] border border-slate-800/60 rounded-[2.5rem] p-8 lg:p-12 relative overflow-hidden group/card">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-cyan-500/[0.02] blur-3xl rounded-full translate-x-20 -translate-y-20"></div>
+                <div class="flex flex-col md:flex-row justify-between items-start gap-6 mb-12">
+                    <div class="space-y-4">
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-white/5 border border-white/10 text-slate-400 text-[10px] font-black uppercase tracking-widest">文档到方案精准对齐</span>
+                            <span class="px-3 py-1 bg-cyan-400/5 border border-cyan-400/20 text-cyan-400 text-[10px] font-black uppercase tracking-widest rounded-lg flex items-center"><i data-lucide="layers" class="w-3 h-3 mr-2"></i> 逻辑提取器与方案发散器</span>
+                        </div>
+                        <h3 class="text-4xl font-black text-white tracking-tight">情况三：PRD 承接项目 (架构转化)</h3>
+                    </div>
+                    <div class="p-4 bg-slate-900/50 rounded-2xl border border-slate-800 text-slate-700 group-hover/card:text-cyan-500/50 transition-colors">
+                        <i data-lucide="search" class="w-8 h-8"></i>
+                    </div>
+                </div>
+                <div class="grid lg:grid-cols-12 gap-12">
+                    <div class="lg:col-span-5">
+                        <h4 class="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-black mb-6 flex items-center"><i data-lucide="target" class="w-3.5 h-3.5 mr-2 text-cyan-500"></i> 操作策略与核心步骤</h4>
+                        <div class="bg-white/[0.02] p-6 rounded-2xl border-l-4 border-cyan-500 mb-8">
+                            <p class="text-sm text-slate-200 leading-relaxed font-medium italic">“将冗长的文字转化为可设计的结构，体现设计的决策深度。”</p>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="group/step p-4 rounded-xl hover:bg-white/[0.02] transition-colors border border-transparent hover:border-white/5">
+                                <div class="text-xs font-black text-cyan-400 mb-2 font-mono flex items-center"><span class="w-1 h-3 bg-cyan-500 mr-2 rounded-full"></span> 步骤 i. 系统性提取</div>
+                                <p class="text-sm text-slate-400 leading-relaxed group-hover/step:text-slate-300">从 PRD 提取功能点、用户路径，直接产出可执行的 DRD。</p>
+                            </div>
+                            <div class="group/step p-4 rounded-xl hover:bg-white/[0.02] transition-colors border border-transparent hover:border-white/5">
+                                <div class="text-xs font-black text-cyan-400 mb-2 font-mono flex items-center"><span class="w-1 h-3 bg-cyan-500 mr-2 rounded-full"></span> 步骤 ii. 多路径探索</div>
+                                <p class="text-sm text-slate-400 leading-relaxed group-hover/step:text-slate-300">围绕目标发散 3 套思路完全不同、互不重叠的交互框架方案。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-7">
+                        <h4 class="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-black mb-6 flex items-center"><i data-lucide="terminal" class="w-3.5 h-3.5 mr-2 text-purple-500"></i> 生产级 PROMPT 代码库</h4>
+                        <div class="space-y-6">
+                            <div class="relative group/prompt">
+                                <div class="flex items-center justify-between px-5 py-3 bg-[#11161d] border-t border-x border-slate-800 rounded-t-2xl">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-2.5 h-2.5 rounded-full bg-red-500/20"></div><div class="w-2.5 h-2.5 rounded-full bg-yellow-500/20"></div><div class="w-2.5 h-2.5 rounded-full bg-green-500/20"></div>
+                                        <span class="ml-3 text-[10px] font-mono text-slate-600 uppercase tracking-widest">prompt_logic_1.md</span>
+                                    </div>
+                                    <button onclick="copyPrompt(this)" class="flex items-center space-x-2 px-3 py-1 bg-cyan-500/10 hover:bg-cyan-500 text-cyan-400 hover:text-black rounded-lg text-[10px] font-black transition-all uppercase tracking-tighter">
+                                        <i data-lucide="clipboard-check" class="w-3 h-3"></i><span>复制指令</span>
+                                    </button>
+                                </div>
+                                <div class="bg-[#010409] p-6 sm:p-8 border border-slate-800 rounded-b-2xl shadow-2xl relative">
+                                    <pre class="text-sm sm:text-[15px] text-slate-300 font-mono leading-[1.7] whitespace-pre-wrap break-words">你是一名资深UX设计师。你的任务是从PRD中系统提取功能点、用户路径与线框图，并输出可直接执行的DRD；同时要求围绕产品目标发散提出三个思路完全不同、互不重叠的交互框架方案。每个DRD需以完整的产品用户体验设计视角进行呈现。</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Case 4 -->
+            <section class="bg-[#0a0d12] border border-slate-800/60 rounded-[2.5rem] p-8 lg:p-12 relative overflow-hidden group/card">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-cyan-500/[0.02] blur-3xl rounded-full translate-x-20 -translate-y-20"></div>
+                <div class="flex flex-col md:flex-row justify-between items-start gap-6 mb-12">
+                    <div class="space-y-4">
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-white/5 border border-white/10 text-slate-400 text-[10px] font-black uppercase tracking-widest">成熟系统新增功能</span>
+                            <span class="px-3 py-1 bg-cyan-400/5 border border-cyan-400/20 text-cyan-400 text-[10px] font-black uppercase tracking-widest rounded-lg flex items-center"><i data-lucide="layers" class="w-3 h-3 mr-2"></i> 系统边界审计员</span>
+                        </div>
+                        <h3 class="text-4xl font-black text-white tracking-tight">情况四：扩展型项目 (Expansion)</h3>
+                    </div>
+                    <div class="p-4 bg-slate-900/50 rounded-2xl border border-slate-800 text-slate-700 group-hover/card:text-cyan-500/50 transition-colors">
+                        <i data-lucide="search" class="w-8 h-8"></i>
+                    </div>
+                </div>
+                <div class="grid lg:grid-cols-12 gap-12">
+                    <div class="lg:col-span-5">
+                        <h4 class="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-black mb-6 flex items-center"><i data-lucide="target" class="w-3.5 h-3.5 mr-2 text-cyan-500"></i> 操作策略与核心步骤</h4>
+                        <div class="bg-white/[0.02] p-6 rounded-2xl border-l-4 border-cyan-500 mb-8">
+                            <p class="text-sm text-slate-200 leading-relaxed font-medium italic">“验证新功能是否会被发现、是否会干扰原有的核心路径与成熟系统的底层逻辑。”</p>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="group/step p-4 rounded-xl hover:bg-white/[0.02] transition-colors border border-transparent hover:border-white/5">
+                                <div class="text-xs font-black text-cyan-400 mb-2 font-mono flex items-center"><span class="w-1 h-3 bg-cyan-500 mr-2 rounded-full"></span> 步骤 i. 识别功能边界</div>
+                                <p class="text-sm text-slate-400 leading-relaxed group-hover/step:text-slate-300">评估入口优先级与展示层级，分析竞品同类场景插入方式。</p>
+                            </div>
+                            <div class="group/step p-4 rounded-xl hover:bg-white/[0.02] transition-colors border border-transparent hover:border-white/5">
+                                <div class="text-xs font-black text-cyan-400 mb-2 font-mono flex items-center"><span class="w-1 h-3 bg-cyan-500 mr-2 rounded-full"></span> 步骤 ii. 建立验证指标</div>
+                                <p class="text-sm text-slate-400 leading-relaxed group-hover/step:text-slate-300">制定针对新功能的曝光率、激活率、复用率等全链路验证方案。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-7">
+                        <h4 class="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-black mb-6 flex items-center"><i data-lucide="terminal" class="w-3.5 h-3.5 mr-2 text-purple-500"></i> 生产级 PROMPT 代码库</h4>
+                        <div class="space-y-6">
+                            <div class="relative group/prompt">
+                                <div class="flex items-center justify-between px-5 py-3 bg-[#11161d] border-t border-x border-slate-800 rounded-t-2xl">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-2.5 h-2.5 rounded-full bg-red-500/20"></div><div class="w-2.5 h-2.5 rounded-full bg-yellow-500/20"></div><div class="w-2.5 h-2.5 rounded-full bg-green-500/20"></div>
+                                        <span class="ml-3 text-[10px] font-mono text-slate-600 uppercase tracking-widest">prompt_logic_1.md</span>
+                                    </div>
+                                    <button onclick="copyPrompt(this)" class="flex items-center space-x-2 px-3 py-1 bg-cyan-500/10 hover:bg-cyan-500 text-cyan-400 hover:text-black rounded-lg text-[10px] font-black transition-all uppercase tracking-tighter">
+                                        <i data-lucide="clipboard-check" class="w-3 h-3"></i><span>复制指令</span>
+                                    </button>
+                                </div>
+                                <div class="bg-[#010409] p-6 sm:p-8 border border-slate-800 rounded-b-2xl shadow-2xl relative">
+                                    <pre class="text-sm sm:text-[15px] text-slate-300 font-mono leading-[1.7] whitespace-pre-wrap break-words">利用AI评估新功能入口在现有界面中的优先级，分析竞品如何插入类似功能。制定新功能的验证方案(曝光、激活、完成、复用率)，并审查新功能对现有UI是否造成视觉冲突与链路干扰。</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Case 5 -->
+            <section class="bg-[#0a0d12] border border-slate-800/60 rounded-[2.5rem] p-8 lg:p-12 relative overflow-hidden group/card">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-cyan-500/[0.02] blur-3xl rounded-full translate-x-20 -translate-y-20"></div>
+                <div class="flex flex-col md:flex-row justify-between items-start gap-6 mb-12">
+                    <div class="space-y-4">
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-white/5 border border-white/10 text-slate-400 text-[10px] font-black uppercase tracking-widest">专项微调提升转化</span>
+                            <span class="px-3 py-1 bg-cyan-400/5 border border-cyan-400/20 text-cyan-400 text-[10px] font-black uppercase tracking-widest rounded-lg flex items-center"><i data-lucide="layers" class="w-3 h-3 mr-2"></i> 专项诊断专家</span>
+                        </div>
+                        <h3 class="text-4xl font-black text-white tracking-tight">情况五：局部改动项目 (Local Change)</h3>
+                    </div>
+                    <div class="p-4 bg-slate-900/50 rounded-2xl border border-slate-800 text-slate-700 group-hover/card:text-cyan-500/50 transition-colors">
+                        <i data-lucide="search" class="w-8 h-8"></i>
+                    </div>
+                </div>
+                <div class="grid lg:grid-cols-12 gap-12">
+                    <div class="lg:col-span-5">
+                        <h4 class="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-black mb-6 flex items-center"><i data-lucide="target" class="w-3.5 h-3.5 mr-2 text-cyan-500"></i> 操作策略与核心步骤</h4>
+                        <div class="bg-white/[0.02] p-6 rounded-2xl border-l-4 border-cyan-500 mb-8">
+                            <p class="text-sm text-slate-200 leading-relaxed font-medium italic">“针对按钮文案、交互手势或视觉体系进行小范围优化，用确定性的逻辑撬动局部业务指标。”</p>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="group/step p-4 rounded-xl hover:bg-white/[0.02] transition-colors border border-transparent hover:border-white/5">
+                                <div class="text-xs font-black text-cyan-400 mb-2 font-mono flex items-center"><span class="w-1 h-3 bg-cyan-500 mr-2 rounded-full"></span> 步骤 i. 视觉基因提取</div>
+                                <p class="text-sm text-slate-400 leading-relaxed group-hover/step:text-slate-300">即使是局部改动，也需通过AI提取原有系统的 Design Tokens (主色、圆角、间距)，确保局部改动与整体一致。</p>
+                            </div>
+                            <div class="group/step p-4 rounded-xl hover:bg-white/[0.02] transition-colors border border-transparent hover:border-white/5">
+                                <div class="text-xs font-black text-cyan-400 mb-2 font-mono flex items-center"><span class="w-1 h-3 bg-cyan-500 mr-2 rounded-full"></span> 步骤 ii. 微观验证计划</div>
+                                <p class="text-sm text-slate-400 leading-relaxed group-hover/step:text-slate-300">利用AI制定 A/B 测试或热力图分析计划，精准验证改动后的点击率或错误操作率变化。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-7">
+                        <h4 class="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-black mb-6 flex items-center"><i data-lucide="terminal" class="w-3.5 h-3.5 mr-2 text-purple-500"></i> 生产级 PROMPT 代码库</h4>
+                        <div class="space-y-6">
+                            <div class="relative group/prompt">
+                                <div class="flex items-center justify-between px-5 py-3 bg-[#11161d] border-t border-x border-slate-800 rounded-t-2xl">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-2.5 h-2.5 rounded-full bg-red-500/20"></div><div class="w-2.5 h-2.5 rounded-full bg-yellow-500/20"></div><div class="w-2.5 h-2.5 rounded-full bg-green-500/20"></div>
+                                        <span class="ml-3 text-[10px] font-mono text-slate-600 uppercase tracking-widest">prompt_logic_1.md</span>
+                                    </div>
+                                    <button onclick="copyPrompt(this)" class="flex items-center space-x-2 px-3 py-1 bg-cyan-500/10 hover:bg-cyan-500 text-cyan-400 hover:text-black rounded-lg text-[10px] font-black transition-all uppercase tracking-tighter">
+                                        <i data-lucide="clipboard-check" class="w-3 h-3"></i><span>复制指令</span>
+                                    </button>
+                                </div>
+                                <div class="bg-[#010409] p-6 sm:p-8 border border-slate-800 rounded-b-2xl shadow-2xl relative">
+                                    <pre class="text-sm sm:text-[15px] text-slate-300 font-mono leading-[1.7] whitespace-pre-wrap break-words">通过AI提取原有系统的 Design Tokens (主色、圆角、间距)，确保局部改动与整体一致，并制定A/B测试或热力图分析计划，验证改动后的点击率或错误操作率变化。</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="tab-content-1" class="tab-content hidden space-y-12">
+            <!-- Tab 1 Case -->
+            <section class="bg-[#0a0d12] border border-slate-800/60 rounded-[2.5rem] p-8 lg:p-12 relative overflow-hidden group/card">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-cyan-500/[0.02] blur-3xl rounded-full translate-x-20 -translate-y-20"></div>
+                <div class="flex flex-col md:flex-row justify-between items-start gap-6 mb-12">
+                    <div class="space-y-4">
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-white/5 border border-white/10 text-slate-400 text-[10px] font-black uppercase tracking-widest">Framework & Logic</span>
+                            <span class="px-3 py-1 bg-cyan-400/5 border border-cyan-400/20 text-cyan-400 text-[10px] font-black uppercase tracking-widest rounded-lg flex items-center"><i data-lucide="layers" class="w-3 h-3 mr-2"></i> 信息架构师 & 竞品调研专家</span>
+                        </div>
+                        <h3 class="text-4xl font-black text-white tracking-tight">结构与调研</h3>
+                    </div>
+                    <div class="p-4 bg-slate-900/50 rounded-2xl border border-slate-800 text-slate-700 group-hover/card:text-cyan-500/50 transition-colors">
+                        <i data-lucide="lightbulb" class="w-8 h-8"></i>
+                    </div>
+                </div>
+                <div class="grid lg:grid-cols-12 gap-12">
+                    <div class="lg:col-span-5">
+                        <h4 class="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-black mb-6 flex items-center"><i data-lucide="target" class="w-3.5 h-3.5 mr-2 text-cyan-500"></i> 操作策略与核心步骤</h4>
+                        <div class="bg-white/[0.02] p-6 rounded-2xl border-l-4 border-cyan-500 mb-8">
+                            <p class="text-sm text-slate-200 leading-relaxed font-medium italic">“改变主观判断，利用 AI 统计“设计变量”频率得出概率级有效结论。”</p>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="group/step p-4 rounded-xl hover:bg-white/[0.02] transition-colors border border-transparent hover:border-white/5">
+                                <div class="text-xs font-black text-cyan-400 mb-2 font-mono flex items-center"><span class="w-1 h-3 bg-cyan-500 mr-2 rounded-full"></span> 步骤 i. 结构设计 (IA)</div>
+                                <p class="text-sm text-slate-400 leading-relaxed group-hover/step:text-slate-300">根据需求自动输出页面清单、跳转关系及核心模块。</p>
+                            </div>
+                            <div class="group/step p-4 rounded-xl hover:bg-white/[0.02] transition-colors border border-transparent hover:border-white/5">
+                                <div class="text-xs font-black text-cyan-400 mb-2 font-mono flex items-center"><span class="w-1 h-3 bg-cyan-500 mr-2 rounded-full"></span> 步骤 ii. 用户流程自动化</div>
+                                <p class="text-sm text-slate-400 leading-relaxed group-hover/step:text-slate-300">将 PRD 直接转化为可编辑的用户流程图 (User Flow)。</p>
+                            </div>
+                            <div class="group/step p-4 rounded-xl hover:bg-white/[0.02] transition-colors border border-transparent hover:border-white/5">
+                                <div class="text-xs font-black text-cyan-400 mb-2 font-mono flex items-center"><span class="w-1 h-3 bg-cyan-500 mr-2 rounded-full"></span> 步骤 iii. 变量频率统计</div>
+                                <p class="text-sm text-slate-400 leading-relaxed group-hover/step:text-slate-300">统计竞品特定变量 (X/N)，得出概率级有效的结论证据。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-7">
+                        <h4 class="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-black mb-6 flex items-center"><i data-lucide="terminal" class="w-3.5 h-3.5 mr-2 text-purple-500"></i> 生产级 PROMPT 代码库</h4>
+                        <div class="space-y-6">
+                            <div class="relative group/prompt">
+                                <div class="flex items-center justify-between px-5 py-3 bg-[#11161d] border-t border-x border-slate-800 rounded-t-2xl">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-2.5 h-2.5 rounded-full bg-red-500/20"></div><div class="w-2.5 h-2.5 rounded-full bg-yellow-500/20"></div><div class="w-2.5 h-2.5 rounded-full bg-green-500/20"></div>
+                                        <span class="ml-3 text-[10px] font-mono text-slate-600 uppercase tracking-widest">prompt_logic_1.md</span>
+                                    </div>
+                                    <button onclick="copyPrompt(this)" class="flex items-center space-x-2 px-3 py-1 bg-cyan-500/10 hover:bg-cyan-500 text-cyan-400 hover:text-black rounded-lg text-[10px] font-black transition-all uppercase tracking-tighter">
+                                        <i data-lucide="clipboard-check" class="w-3 h-3"></i><span>复制指令</span>
+                                    </button>
+                                </div>
+                                <div class="bg-[#010409] p-6 sm:p-8 border border-slate-800 rounded-b-2xl shadow-2xl relative">
+                                    <pre class="text-sm sm:text-[15px] text-slate-300 font-mono leading-[1.7] whitespace-pre-wrap break-words">【IA设计】：你是一名资深 UX设计师。根据PRD输出信息架构文档，包括：1.页面清单(每个页面一句话说明用途) 2.页面跳转关系 3.每个页面的核心模块。格式为 Markdown。</pre>
+                                </div>
+                            </div>
+                            <div class="relative group/prompt">
+                                <div class="flex items-center justify-between px-5 py-3 bg-[#11161d] border-t border-x border-slate-800 rounded-t-2xl">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-2.5 h-2.5 rounded-full bg-red-500/20"></div><div class="w-2.5 h-2.5 rounded-full bg-yellow-500/20"></div><div class="w-2.5 h-2.5 rounded-full bg-green-500/20"></div>
+                                        <span class="ml-3 text-[10px] font-mono text-slate-600 uppercase tracking-widest">prompt_logic_2.md</span>
+                                    </div>
+                                    <button onclick="copyPrompt(this)" class="flex items-center space-x-2 px-3 py-1 bg-cyan-500/10 hover:bg-cyan-500 text-cyan-400 hover:text-black rounded-lg text-[10px] font-black transition-all uppercase tracking-tighter">
+                                        <i data-lucide="clipboard-check" class="w-3 h-3"></i><span>复制指令</span>
+                                    </button>
+                                </div>
+                                <div class="bg-[#010409] p-6 sm:p-8 border border-slate-800 rounded-b-2xl shadow-2xl relative">
+                                    <pre class="text-sm sm:text-[15px] text-slate-300 font-mono leading-[1.7] whitespace-pre-wrap break-words">【竞品决策表】：基于竞品截图输出“设计决策依据表”，帮我完成半定量的变量频率统计(X/N)。从决策成本、信息密度、风险程度维度判断适配性，并生成专业汇报话术。</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="tab-content-2" class="tab-content hidden space-y-12">
+            <!-- Tab 2 Case -->
+            <section class="bg-[#0a0d12] border border-slate-800/60 rounded-[2.5rem] p-8 lg:p-12 relative overflow-hidden group/card">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-cyan-500/[0.02] blur-3xl rounded-full translate-x-20 -translate-y-20"></div>
+                <div class="flex flex-col md:flex-row justify-between items-start gap-6 mb-12">
+                    <div class="space-y-4">
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-white/5 border border-white/10 text-slate-400 text-[10px] font-black uppercase tracking-widest">Visual Design</span>
+                            <span class="px-3 py-1 bg-cyan-400/5 border border-cyan-400/20 text-cyan-400 text-[10px] font-black uppercase tracking-widest rounded-lg flex items-center"><i data-lucide="layers" class="w-3 h-3 mr-2"></i> 氛围编程专家 (Vibecoding)</span>
+                        </div>
+                        <h3 class="text-4xl font-black text-white tracking-tight">UI 自动化与 VibeCoding</h3>
+                    </div>
+                    <div class="p-4 bg-slate-900/50 rounded-2xl border border-slate-800 text-slate-700 group-hover/card:text-cyan-500/50 transition-colors">
+                        <i data-lucide="palette" class="w-8 h-8"></i>
+                    </div>
+                </div>
+                <div class="grid lg:grid-cols-12 gap-12">
+                    <div class="lg:col-span-5">
+                        <h4 class="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-black mb-6 flex items-center"><i data-lucide="target" class="w-3.5 h-3.5 mr-2 text-cyan-500"></i> 操作策略与核心步骤</h4>
+                        <div class="bg-white/[0.02] p-6 rounded-2xl border-l-4 border-cyan-500 mb-8">
+                            <p class="text-sm text-slate-200 leading-relaxed font-medium italic">“提取视觉基因并自动化覆盖系统可能存在的各种状态边缘。”</p>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="group/step p-4 rounded-xl hover:bg-white/[0.02] transition-colors border border-transparent hover:border-white/5">
+                                <div class="text-xs font-black text-cyan-400 mb-2 font-mono flex items-center"><span class="w-1 h-3 bg-cyan-500 mr-2 rounded-full"></span> 步骤 i. 提取设计变量</div>
+                                <p class="text-sm text-slate-400 leading-relaxed group-hover/step:text-slate-300">丢入参考图让AI分析色调、空间感、组件风格和情绪基调。</p>
+                            </div>
+                            <div class="group/step p-4 rounded-xl hover:bg-white/[0.02] transition-colors border border-transparent hover:border-white/5">
+                                <div class="text-xs font-black text-cyan-400 mb-2 font-mono flex items-center"><span class="w-1 h-3 bg-cyan-500 mr-2 rounded-full"></span> 步骤 ii. UI 状态完备性</div>
+                                <p class="text-sm text-slate-400 leading-relaxed group-hover/step:text-slate-300">生成包含正常、报错、加载中等在内的 5 列 UI 状态清单。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-7">
+                        <h4 class="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-black mb-6 flex items-center"><i data-lucide="terminal" class="w-3.5 h-3.5 mr-2 text-purple-500"></i> 生产级 PROMPT 代码库</h4>
+                        <div class="space-y-6">
+                            <div class="relative group/prompt">
+                                <div class="flex items-center justify-between px-5 py-3 bg-[#11161d] border-t border-x border-slate-800 rounded-t-2xl">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-2.5 h-2.5 rounded-full bg-red-500/20"></div><div class="w-2.5 h-2.5 rounded-full bg-yellow-500/20"></div><div class="w-2.5 h-2.5 rounded-full bg-green-500/20"></div>
+                                        <span class="ml-3 text-[10px] font-mono text-slate-600 uppercase tracking-widest">prompt_logic_1.md</span>
+                                    </div>
+                                    <button onclick="copyPrompt(this)" class="flex items-center space-x-2 px-3 py-1 bg-cyan-500/10 hover:bg-cyan-500 text-cyan-400 hover:text-black rounded-lg text-[10px] font-black transition-all uppercase tracking-tighter">
+                                        <i data-lucide="clipboard-check" class="w-3 h-3"></i><span>复制指令</span>
+                                    </button>
+                                </div>
+                                <div class="bg-[#010409] p-6 sm:p-8 border border-slate-800 rounded-b-2xl shadow-2xl relative">
+                                    <pre class="text-sm sm:text-[15px] text-slate-300 font-mono leading-[1.7] whitespace-pre-wrap break-words">【视觉提取】：你是一名资深 UI设计师。提取参考图中的视觉决策（色调、空间感、组件风格）并生成 Design Tokens (DESIGN_BRIEF.md + tokens.css)。</pre>
+                                </div>
+                            </div>
+                            <div class="relative group/prompt">
+                                <div class="flex items-center justify-between px-5 py-3 bg-[#11161d] border-t border-x border-slate-800 rounded-t-2xl">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-2.5 h-2.5 rounded-full bg-red-500/20"></div><div class="w-2.5 h-2.5 rounded-full bg-yellow-500/20"></div><div class="w-2.5 h-2.5 rounded-full bg-green-500/20"></div>
+                                        <span class="ml-3 text-[10px] font-mono text-slate-600 uppercase tracking-widest">prompt_logic_2.md</span>
+                                    </div>
+                                    <button onclick="copyPrompt(this)" class="flex items-center space-x-2 px-3 py-1 bg-cyan-500/10 hover:bg-cyan-500 text-cyan-400 hover:text-black rounded-lg text-[10px] font-black transition-all uppercase tracking-tighter">
+                                        <i data-lucide="clipboard-check" class="w-3 h-3"></i><span>复制指令</span>
+                                    </button>
+                                </div>
+                                <div class="bg-[#010409] p-6 sm:p-8 border border-slate-800 rounded-b-2xl shadow-2xl relative">
+                                    <pre class="text-sm sm:text-[15px] text-slate-300 font-mono leading-[1.7] whitespace-pre-wrap break-words">【状态走走清单】：生成UI状态覆盖清单（5列：状态、触发条件、UI组件、线上级文案、是否可恢复），覆盖正常路径、用户错误、系统错误、加载中、边缘决策状态。</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="tab-content-3" class="tab-content hidden space-y-12">
+            <!-- Tab 3 Case -->
+            <section class="bg-[#0a0d12] border border-slate-800/60 rounded-[2.5rem] p-8 lg:p-12 relative overflow-hidden group/card">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-cyan-500/[0.02] blur-3xl rounded-full translate-x-20 -translate-y-20"></div>
+                <div class="flex flex-col md:flex-row justify-between items-start gap-6 mb-12">
+                    <div class="space-y-4">
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-white/5 border border-white/10 text-slate-400 text-[10px] font-black uppercase tracking-widest">Quality Audit</span>
+                            <span class="px-3 py-1 bg-cyan-400/5 border border-cyan-400/20 text-cyan-400 text-[10px] font-black uppercase tracking-widest rounded-lg flex items-center"><i data-lucide="layers" class="w-3 h-3 mr-2"></i> 高级体验审计官</span>
+                        </div>
+                        <h3 class="text-4xl font-black text-white tracking-tight">体验走查与审计</h3>
+                    </div>
+                    <div class="p-4 bg-slate-900/50 rounded-2xl border border-slate-800 text-slate-700 group-hover/card:text-cyan-500/50 transition-colors">
+                        <i data-lucide="check-circle" class="w-8 h-8"></i>
+                    </div>
+                </div>
+                <div class="grid lg:grid-cols-12 gap-12">
+                    <div class="lg:col-span-5">
+                        <h4 class="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-black mb-6 flex items-center"><i data-lucide="target" class="w-3.5 h-3.5 mr-2 text-cyan-500"></i> 操作策略与核心步骤</h4>
+                        <div class="bg-white/[0.02] p-6 rounded-2xl border-l-4 border-cyan-500 mb-8">
+                            <p class="text-sm text-slate-200 leading-relaxed font-medium italic">“不仅限于表层评价，而是基于文档进行 system 重构与体验补齐建议。”</p>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="group/step p-4 rounded-xl hover:bg-white/[0.02] transition-colors border border-transparent hover:border-white/5">
+                                <div class="text-xs font-black text-cyan-400 mb-2 font-mono flex items-center"><span class="w-1 h-3 bg-cyan-500 mr-2 rounded-full"></span> 步骤 i. 无障碍性审计</div>
+                                <p class="text-sm text-slate-400 leading-relaxed group-hover/step:text-slate-300">检查对比度、触摸目标、键盘导航等 WCAG 合规性并提供修复 Prompt。</p>
+                            </div>
+                            <div class="group/step p-4 rounded-xl hover:bg-white/[0.02] transition-colors border border-transparent hover:border-white/5">
+                                <div class="text-xs font-black text-cyan-400 mb-2 font-mono flex items-center"><span class="w-1 h-3 bg-cyan-500 mr-2 rounded-full"></span> 步骤 ii. 专家评审</div>
+                                <p class="text-sm text-slate-400 leading-relaxed group-hover/step:text-slate-300">自行拆解体验维度，从用户任务出发给出优化建议。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-7">
+                        <h4 class="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-black mb-6 flex items-center"><i data-lucide="terminal" class="w-3.5 h-3.5 mr-2 text-purple-500"></i> 生产级 PROMPT 代码库</h4>
+                        <div class="space-y-6">
+                            <div class="relative group/prompt">
+                                <div class="flex items-center justify-between px-5 py-3 bg-[#11161d] border-t border-x border-slate-800 rounded-t-2xl">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-2.5 h-2.5 rounded-full bg-red-500/20"></div><div class="w-2.5 h-2.5 rounded-full bg-yellow-500/20"></div><div class="w-2.5 h-2.5 rounded-full bg-green-500/20"></div>
+                                        <span class="ml-3 text-[10px] font-mono text-slate-600 uppercase tracking-widest">prompt_logic_1.md</span>
+                                    </div>
+                                    <button onclick="copyPrompt(this)" class="flex items-center space-x-2 px-3 py-1 bg-cyan-500/10 hover:bg-cyan-500 text-cyan-400 hover:text-black rounded-lg text-[10px] font-black transition-all uppercase tracking-tighter">
+                                        <i data-lucide="clipboard-check" class="w-3 h-3"></i><span>复制指令</span>
+                                    </button>
+                                </div>
+                                <div class="bg-[#010409] p-6 sm:p-8 border border-slate-800 rounded-b-2xl shadow-2xl relative">
+                                    <pre class="text-sm sm:text-[15px] text-slate-300 font-mono leading-[1.7] whitespace-pre-wrap break-words">【无障碍性审计】：你是一名资深 UX/Accessibility 专家。请检查界面中的色彩对比度、触摸目标尺寸、文本层级、键盘导航。提供修复方案并生成迭代提示词。</pre>
+                                </div>
+                            </div>
+                            <div class="relative group/prompt">
+                                <div class="flex items-center justify-between px-5 py-3 bg-[#11161d] border-t border-x border-slate-800 rounded-t-2xl">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-2.5 h-2.5 rounded-full bg-red-500/20"></div><div class="w-2.5 h-2.5 rounded-full bg-yellow-500/20"></div><div class="w-2.5 h-2.5 rounded-full bg-green-500/20"></div>
+                                        <span class="ml-3 text-[10px] font-mono text-slate-600 uppercase tracking-widest">prompt_logic_2.md</span>
+                                    </div>
+                                    <button onclick="copyPrompt(this)" class="flex items-center space-x-2 px-3 py-1 bg-cyan-500/10 hover:bg-cyan-500 text-cyan-400 hover:text-black rounded-lg text-[10px] font-black transition-all uppercase tracking-tighter">
+                                        <i data-lucide="clipboard-check" class="w-3 h-3"></i><span>复制指令</span>
+                                    </button>
+                                </div>
+                                <div class="bg-[#010409] p-6 sm:p-8 border border-slate-800 rounded-b-2xl shadow-2xl relative">
+                                    <pre class="text-sm sm:text-[15px] text-slate-300 font-mono leading-[1.7] whitespace-pre-wrap break-words">【专家评审】：你是资深 UX 评审专家，按照产品文档，基于当前的设计方案，自行拆解体验维度，并给出优化建议。</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+    <!-- Decorative Symbols -->
+    <div class="mt-20 flex items-center justify-center space-x-12 opacity-10 grayscale py-12 border-t border-white/5">
+        <i data-lucide="settings-2" class="w-6 h-6"></i>
+        <i data-lucide="mouse-pointer-2" class="w-6 h-6"></i>
+        <i data-lucide="database" class="w-6 h-6"></i>
+        <i data-lucide="layout" class="w-6 h-6"></i>
+        <i data-lucide="zap" class="w-6 h-6"></i>
+    </div>
+
+    <footer class="py-12 text-center">
+        <div class="text-slate-700 text-[10px] uppercase font-black tracking-[0.6em]">
+            INTELLIGENT UX FRAMEWORK &copy; 2026 PROTOCOL
+        </div>
+    </footer>
+
+    <!-- Tab Logic Script -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        function switchTab(tabId) {
+            // Hide all contents and reset styles
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = "tab-btn flex-1 flex items-center justify-start space-x-4 px-6 py-5 rounded-3xl border transition-all duration-300 bg-transparent border-slate-800 text-slate-500 hover:border-slate-700 hover:text-slate-300";
+            });
+            document.querySelectorAll('.tab-icon').forEach(icon => {
+                icon.className = "tab-icon text-slate-600 shrink-0";
+            });
+
+            // Show active tab content
+            document.getElementById(`tab-content-${tabId}`).classList.remove('hidden');
+            
+            // Set active button style
+            const activeBtn = document.getElementById(`tab-btn-${tabId}`);
+            activeBtn.className = "tab-btn flex-1 flex items-center justify-start space-x-4 px-6 py-5 rounded-3xl border transition-all duration-300 bg-slate-900 border-cyan-500/50 text-white shadow-[0_0_30px_rgba(6,182,212,0.15)]";
+            activeBtn.querySelector('.tab-icon').className = "tab-icon text-cyan-400 shrink-0";
+        }
+
+        function copyPrompt(button) {
+            const preElement = button.closest('.group\/prompt').querySelector('pre');
+            const textToCopy = preElement.innerText;
+
+            // Simple clipboard fallbacks for offline scenario
+            const textArea = document.createElement("textarea");
+            textArea.value = textToCopy;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                const span = button.querySelector('span');
+                const origText = span.innerText;
+                span.innerText = "已复制！";
+                button.classList.add('bg-green-500', 'text-black');
+                setTimeout(() => {
+                    span.innerText = origText;
+                    button.classList.remove('bg-green-500', 'text-black');
+                }, 2000);
+            } catch (err) {
+                console.error('无法复制', err);
+            }
+            document.body.removeChild(textArea);
+        }
+    </script>
+</body>
+</html>

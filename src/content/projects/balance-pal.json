@@ -1,0 +1,41 @@
+{
+  "slug": "balance-pal",
+  "title": "BalancePal",
+  "subtitle": "基于情绪镜像的屏幕管理产品",
+  "description": "一个基于“情绪镜像”的屏幕管理产品，通过一个陪伴角色 Lumi，引导用户与真实生活建立连接。",
+  "excerpt": "一个基于“情绪镜像”的屏幕管理产品，通过一个陪伴角色 Lumi，引导用户与真实生活建立连接。",
+  "year": "2025 - NOW",
+  "category": "EMOTIONAL PRODUCT",
+  "tags": [
+    "Emotional Design",
+    "AI Native Product",
+    "Vibe Coding"
+  ],
+  "image": "/images/projects/balance-pal/cover.png",
+  "imageAspect": "1024/768",
+  "imageAlt": "BalancePal 项目封面：首页、活动选择与逛公园任务界面",
+  "featured": true,
+  "role": "Product Designer",
+  "timeline": "2025 - NOW",
+  "challenge": "屏幕管理产品往往只强调控制和限制，缺少对用户情绪状态的理解与陪伴。",
+  "approach": "通过情绪镜像和陪伴角色 Lumi，把屏幕使用反馈转化为更柔和、可感知的自我觉察体验。",
+  "outcome": "探索一种更具情感温度的数字健康产品方向，帮助用户重新与真实生活建立连接。",
+  "highlights": [
+    "情绪镜像机制",
+    "陪伴角色 Lumi",
+    "屏幕管理体验",
+    "AI Native Product",
+    "Vibe Coding 原型"
+  ],
+  "stack": [
+    "Product Design",
+    "Emotional Design",
+    "AI Workflow",
+    "Vibe Coding"
+  ],
+  "metrics": [
+    "情绪镜像概念验证",
+    "陪伴式屏幕管理",
+    "持续迭代中"
+  ]
+}

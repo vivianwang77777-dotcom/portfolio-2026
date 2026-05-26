@@ -1,0 +1,45 @@
+{
+  "slug": "ai-workflow-lab",
+  "title": "AI Workflow Lab",
+  "subtitle": "探索 AI 驱动的设计工程化与生成式工作流",
+  "description": "围绕 AI Native Product 与 Vibe Coding 工作流，探索如何通过结构化规则、Agent 系统与设计工程方法，将感性设计转化为可规模化、可自动化的生产系统。",
+  "excerpt": "将设计经验结构化，构建 AI 协作时代的新型产品工作流。",
+  "year": "2025 - NOW",
+  "category": "AI Systems",
+  "tags": [
+    "AI Workflow",
+    "Design Engineering",
+    "Agent Design",
+    "Vibe Coding"
+  ],
+  "image": "/images/projects/ai-workflow-lab/cover.jpg",
+  "imageAspect": "1024/768",
+  "imageAlt": "AI Workflow Lab 项目封面：AI 驱动设计工作流四步流程",
+  "featured": true,
+  "role": "Product Design Engineer",
+  "timeline": "Ongoing",
+  "challenge": "传统设计流程高度依赖个人经验与重复劳动，大模型在真实业务中也存在不可控、高成本与输出不稳定的问题，难以直接支撑规模化生产。",
+  "approach": "通过结构化美学规则、生成式工作流与 Agent Skill 设计模式，将 Prompt、规则、模板与流程解耦，建立可控、低消耗、可工程化的 AI 协作系统。",
+  "outcome": "逐步形成一套 AI Native 的设计生产方法论，实现内容生成自动化、工作流标准化与 AI 协作工程化，并应用于真实业务场景探索。",
+  "highlights": [
+    "构建 PUGC 封面自动化生成引擎",
+    "沉淀 Vibe Coding 协作 SOP",
+    "探索 Agent Skill 设计模式",
+    "实现 AI 内容生成标准化",
+    "独立完成 AI Native 产品开发实践"
+  ],
+  "stack": [
+    "Cursor",
+    "Next.js",
+    "LLM Workflow",
+    "Agent Systems",
+    "Generative Design"
+  ],
+  "metrics": [
+    "内容生成成本显著下降",
+    "结构化美学规则沉淀",
+    "多 Agent 协作工作流",
+    "AI 产品持续迭代中"
+  ],
+  "link": "/projects/ai-workflow-lab"
+}

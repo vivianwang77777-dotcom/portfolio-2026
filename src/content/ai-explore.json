@@ -1,0 +1,62 @@
+{
+  "eyebrow": "AI Explore",
+  "title": "聊聊我的工作、方法与理念",
+  "description": "一种 AI 原生的交互范式——选择下方提示，模拟智能回复。后续可接入真实模型。",
+  "ui": {
+    "tryAsking": "选择你想了解",
+    "response": "回复",
+    "emptyState": "选择一个提示，以交互方式探索这份作品集。",
+    "thinking": "思考中…",
+    "explorePanelAria": "AI 探索交互"
+  },
+  "responses": {
+    "process": "我会先做意图梳理——先理解用户真正需要什么，再考虑模型能做什么。然后在代码里快速原型验证，同时在 Figma 里探索版式与叙事结构。",
+    "philosophy": "克制本身就是信号。大留白、优质字体与柔和渐变营造平静感，让智能显得可信，而不是喧闹。",
+    "stack": "用 Next.js 与 TypeScript 做可交付原型；用 Framer Motion 与 GSAP 做有意义的动效；用 Figma 搭建系统并探索叙事。",
+    "collaborate": "我把动效规格写成代码、尽早文档化组件 API，并与工程师在同一仓库协作——设计决策要能上线，而不只停留在幻灯片。",
+    "default": "欢迎继续交流，随时联系我。"
+  },
+  "prompts": [
+    {
+      "id": "process",
+      "label": "设计流程"
+    },
+    {
+      "id": "philosophy",
+      "label": "设计理念",
+      "prompt": "哪些原则指导你做出克制、偏编辑感的界面？"
+    },
+    {
+      "id": "stack",
+      "label": "技术栈",
+      "prompt": "你用什么工具来原型验证并落地设计系统？"
+    },
+    {
+      "id": "collaborate",
+      "label": "协作方式",
+      "prompt": "你如何与工程师在动效与交互上协作？"
+    }
+  ],
+  "capabilities": [
+    {
+      "title": "意图优先的体验",
+      "description": "界面先呈现用户目标，再呈现模型能力，降低认知负担。",
+      "icon": "sparkles"
+    },
+    {
+      "title": "系统化思维",
+      "description": "可扩展的设计令牌、组件与文档，随产品复杂度一起演进。",
+      "icon": "layers"
+    },
+    {
+      "title": "动效承载语义",
+      "description": "克制而有目的的动画用来传达状态，而非单纯装饰。",
+      "icon": "zap"
+    },
+    {
+      "title": "人与智能",
+      "description": "通过字体、节奏与大留白建立信任的编辑式版式。",
+      "icon": "brain"
+    }
+  ]
+}

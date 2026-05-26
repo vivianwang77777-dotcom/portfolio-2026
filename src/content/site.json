@@ -1,0 +1,33 @@
+{
+  "name": "王玮",
+  "nameEn": "Wang Wei",
+  "role": "AI 产品设计师",
+  "tagline": "7年 UX 设计经验，专注 AI 产品与体验设计",
+  "email": "hello@example.com",
+  "location": "北京",
+  "logo": "Portfolio 2026",
+  "hero": {
+    "eyebrow": "PORTFOLIO",
+    "title": "Hi, I'm WangWei",
+    "titleMuted": "AI Product Designer",
+    "description": "7年 UX 设计经验，先后就职于网易、阿里高德。\n现在，我正在深度实践 AI 工作流，重新定义自己的边界。",
+    "highlight": "当创作不再有边界，让我们回归问题本身。",
+    "unicornStudioProjectId": "Qmhwa6RyMGKH1WpFvyvK",
+    "avatar": "/images/hero/me.png",
+    "avatarAlt": "王玮"
+  },
+  "social": {
+    "wechat": "18161809800",
+    "phone": "18161809800"
+  },
+  "nav": [
+    { "id": "work", "label": "My Work", "href": "#work" },
+    { "id": "explore", "label": "AI Explore", "href": "#explore" },
+    { "id": "about", "label": "About me", "href": "#about" }
+  ],
+  "footer": {
+    "headline": ["探索未知"],
+    "homeLabel": "Home",
+    "contactLabel": "联系我"
+  }
+}

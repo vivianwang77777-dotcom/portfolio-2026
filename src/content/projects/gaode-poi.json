@@ -1,0 +1,176 @@
+{
+  "slug": "gaode-poi-detail",
+  "title": "高德地图 POI 详情页体验升级",
+  "subtitle": "从导航工具到内容消费入口，重新定义地图场景下的地点体验",
+  "description": "围绕高德地图内容化战略，重新定义 POI（地点）详情页的信息消费体验。通过统一内容框架、沉浸式浏览体验与用户决策路径优化，构建覆盖多行业场景的平台级内容体验系统。",
+  "excerpt": "重新定义地图场景下的地点消费体验，构建地图内容化的新入口。",
+  "year": "2025 - 2026",
+  "category": "Content Experience",
+  "tags": [
+    "UX Design",
+    "Content Strategy",
+    "Map Experience",
+    "Decision Experience",
+    "Design System"
+  ],
+  "image": "/images/projects/gaode-poi/hero/cover.jpg",
+  "imageAspect": "2400/1792",
+  "imageAlt": "高德地图 POI 详情页体验升级项目封面",
+  "featured": true,
+  "theme": {
+    "gradientStart": "#e8f0fe",
+    "gradientMid": "#f3e8ff",
+    "gradientEnd": "#dbeafe",
+    "mesh": "default",
+    "meshUntilSection": "content-framework"
+  },
+  "challenge": "随着地图内容生态增长，POI 页面开始承载越来越多攻略、推荐菜、用户笔记与榜单内容。但原有页面结构仍然基于工具化信息逻辑，导致信息层级混乱、内容割裂、消费路径不清晰，无法形成连续内容消费体验。",
+  "approach": "围绕用户真实消费行为，我们重新拆解地点决策过程，并提出“感知 → 信任 → 行动”的内容消费路径。通过统一内容框架、沉浸式浏览体验与视觉表达升级，帮助用户快速建立场景感知、消费信任与行动决策。",
+  "outcome": "项目推动高德地图 POI 页面从工具型信息页进一步转向内容消费入口，建立地图场景下的新型地点消费体验，并沉淀覆盖多行业场景的平台能力。",
+  "metrics": [
+    {
+      "label": "内容消费 UV 提升",
+      "value": "+23.5%"
+    },
+    {
+      "label": "内容消费 PV 提升",
+      "value": "+30.6%"
+    },
+    {
+      "label": "笔记模块 CTR 提升",
+      "value": "+31%"
+    },
+    {
+      "label": "推荐菜功能渗透率提升",
+      "value": "+284%"
+    },
+    {
+      "label": "真实业务场景落地",
+      "value": "50+"
+    },
+    {
+      "label": "相关专利",
+      "value": "10+"
+    }
+  ],
+  "highlights": [
+    "重新定义 POI 内容消费路径",
+    "建立沉浸式内容浏览体验",
+    "重构地图内容信息架构",
+    "强化地点内容视觉表达",
+    "建立覆盖多行业场景的平台能力"
+  ],
+  "stack": [
+    "Figma",
+    "UX Strategy",
+    "Content Framework",
+    "Visual Systems",
+    "Design System"
+  ],
+  "sections": [
+    {
+      "id": "hero",
+      "title": "高德地图 POI 详情页体验升级",
+      "description": "从导航工具到内容消费入口，重新定义地图场景下的地点体验。",
+      "image": "/images/projects/gaode-poi/hero/cover.jpg",
+      "imageAspect": "2400/1792",
+      "layout": "hero"
+    },
+    {
+      "id": "strategy-narrative",
+      "title": "战略背景与设计挑战",
+      "description": "从行业变化到决策框架，重新定义 POI 内容消费体验。",
+      "layout": "strategy-narrative"
+    },
+    {
+      "id": "content-framework",
+      "title": "建立地图场景下的内容消费体系",
+      "description": "围绕新的消费决策逻辑，我们重新构建 POI 内容框架。通过统一内容容器、Feed 化浏览体验与沉浸式内容流，让攻略、推荐菜、用户笔记、地点推荐与榜单内容形成连续消费体验。",
+      "layout": "mixed",
+      "items": [
+        {
+          "title": "重构 POI 信息架构",
+          "description": "为了提升内容消费效率，我们重新梳理整个页面结构。通过删减冗余模块、统一内容层级与建立标准化容器，形成「确认当下 → 横向比较 → 延伸探索」的信息流动路径。",
+          "image": "/images/projects/gaode-poi/content-framework/content-framework.jpg",
+          "imageAspect": "2936/1190",
+          "layout": "full-image"
+        },
+        {
+          "title": "统一沉浸式内容浏览体验",
+          "description": "过去，不同内容模块拥有不同交互逻辑，用户需要不断切换页面与阅读模式。因此，我们建立统一沉浸式内容容器，通过统一 Feed 结构、沉浸式笔记流与一致化交互模式，提升内容浏览连续性。",
+          "image": "/images/projects/gaode-poi/content-framework/immersive-experience.jpg",
+          "imageAspect": "2936/1284",
+          "layout": "full-image"
+        }
+      ]
+    },
+    {
+      "id": "decision-experience",
+      "title": "围绕“感知 → 信任 → 行动”优化地点消费体验",
+      "description": "围绕用户消费决策路径，我们重点强化用户与地点之间的第一次“见面”体验。通过头图框架升级、推荐菜拟物化、图片封面动态化与模板化视觉表达，增强地点内容的视觉冲击力，帮助用户快速建立场景直觉、情绪感知与消费信任。",
+      "layout": "mixed",
+      "items": [
+        {
+          "title": "头图框架升级",
+          "description": "重新定义 POI 首屏视觉结构。通过更具沉浸感的全屏头图与内容布局，强化地点氛围表达，提升用户进入页面后的第一感知体验。",
+          "image": "/images/projects/gaode-poi/decision-experience/hero-visual.jpg",
+          "imageAspect": "2936/1284",
+          "layout": "full-image"
+        },
+        {
+          "title": "推荐菜拟物化",
+          "description": "通过拟物化视觉表达与大尺寸食物展示，增强真实感与消费欲望，帮助用户快速建立“这个地方值得去”的消费直觉。",
+          "image": "/images/projects/gaode-poi/decision-experience/food-visual.jpg",
+          "imageAspect": "2936/1284",
+          "layout": "full-image"
+        },
+        {
+          "title": "UPGC供给感知强化",
+          "description": "通过分析小红书高互动内容封面的规律，从文案信息、视觉结构、排版布局、风格调性总结可被算法化的规律，提高封面吸引力",
+          "image": "/images/projects/gaode-poi/decision-experience/cover-pic.jpg",
+          "imageAspect": "1908/954",
+          "layout": "full-image"
+        },
+        {
+          "title": "内容封面动态化",
+          "description": "探索动态化内容表达方式。通过动态图片、模板化视觉体系与 AI 增强封面能力，强化地点氛围感与内容吸引力，提升用户停留与消费意愿。",
+          "image": "/images/projects/gaode-poi/decision-experience/dynamic-cover.jpg",
+          "imageAspect": "2041/1468",
+          "layout": "split"
+        }
+      ]
+    },
+    {
+      "id": "brand-trust",
+      "title": "强化品牌信任：扫街榜评分详情",
+      "description": "为了体现每一个上榜地点评分的来源的真实性和高德独有的地图数据能力，传递10亿人的行为信任度，与行业其他竞品不同，我们在采用了半图半表的页面结构。要最大限度地在方寸之间还原复杂的计算公式，并配合图面以及数据光柱图动效，来体现数据的“实时感”和“真实感”",
+      "image": "/images/projects/gaode-poi/brand-trust/truth.jpg",
+      "imageAspect": "2936/1468",
+      "layout": "grid"
+    },
+    {
+      "id": "platform-system",
+      "title": "建立地图内容的平台能力",
+      "description": "围绕内容容器、组件规范、行业模板与交互模式，建立覆盖 360+ 行业场景的设计系统，提升体验一致性并降低研发与协作成本。",
+      "image": "/images/projects/gaode-poi/platform-system/platform-system.jpg",
+      "imageAspect": "2936/1284",
+      "layout": "grid"
+    },
+    {
+      "id": "outcomes",
+      "title": "项目结果",
+      "description": "项目推动高德地图 POI 页面从工具型信息页进一步转向内容消费入口，并建立地图场景下的新型地点消费体验。",
+      "layout": "metrics"
+    },
+    {
+      "id": "reflection",
+      "title": "Reflection",
+      "description": "地图真正的价值，不仅是效率。它更像是一种连接人与真实世界、内容与消费决策、线上与线下体验的媒介。当地图内容开始具备场景感、情绪感与消费信任后，地图产品也逐渐从“导航工具”转向一种新的生活方式入口。",
+      "layout": "text"
+    }
+  ],
+  "nextProject": {
+    "title": "高德内容化建设",
+    "slug": "gaode-content-ecosystem"
+  }
+}

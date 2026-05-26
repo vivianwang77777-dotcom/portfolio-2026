@@ -25,6 +25,7 @@ export function ProjectFigure({
     <figure
       className={cn(
         "relative w-full overflow-hidden rounded-3xl border border-border",
+        imageFit === "contain" && "bg-[var(--surface)]",
         !imageAspect && "aspect-[4/3]",
         className,
       )}
@@ -36,6 +37,7 @@ export function ProjectFigure({
         fill
         priority={priority}
         sizes={sizes}
+        unoptimized={src.includes("?v=")}
         className={cn(
           "object-center",
           imageFit === "contain" ? "object-contain" : "object-cover",

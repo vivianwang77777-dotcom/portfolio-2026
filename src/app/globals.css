@@ -10,7 +10,23 @@
   --gradient-start: #e8f0fe;
   --gradient-mid: #f3e8ff;
   --gradient-end: #fce7f3;
-  --nav-height: 4rem;
+  /* 浮动导航：header pt + 胶囊高度 + 安全间距 */
+  --nav-height: 5.5rem;
+  /* 首屏底部预留高度，用于露出「精选项目」标题 */
+  --hero-work-peek: 8.5rem;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --nav-height: 6rem;
+    --hero-work-peek: 9.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --hero-work-peek: 10.5rem;
+  }
 }
 
 /* 浅色项目页固定使用浅色 token，避免系统深色模式覆盖光晕色 */

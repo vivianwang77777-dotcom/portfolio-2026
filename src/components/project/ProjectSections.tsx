@@ -342,6 +342,7 @@ function MixedLayout({ section }: { section: ProjectSection }) {
                 src={item.image}
                 alt={item.title}
                 imageAspect={item.imageAspect}
+                imageFit={item.imageFit ?? section.imageFit ?? "contain"}
               />
             </article>
           );
@@ -361,6 +362,7 @@ function MixedLayout({ section }: { section: ProjectSection }) {
                 src={item.image}
                 alt={item.title}
                 imageAspect={item.imageAspect}
+                imageFit={item.imageFit ?? section.imageFit ?? "contain"}
               />
             )}
           </article>

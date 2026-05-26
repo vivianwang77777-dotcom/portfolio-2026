@@ -23,7 +23,7 @@
   "nav": [
     { "id": "work", "label": "My Work", "href": "#work" },
     { "id": "explore", "label": "AI Explore", "href": "#explore" },
-    { "id": "about", "label": "About me", "href": "#about" }
+    { "id": "about", "label": "About Me", "href": "#about" }
   ],
   "footer": {
     "headline": ["探索未知"],

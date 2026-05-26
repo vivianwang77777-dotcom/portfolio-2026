@@ -33,7 +33,7 @@ export function HeroSection() {
   return (
     <section
       aria-labelledby="hero-heading"
-      className="relative min-h-[100svh] overflow-hidden bg-background pt-[var(--nav-height)]"
+      className="relative min-h-[calc(100svh-var(--hero-work-peek))] overflow-hidden bg-background pt-[var(--nav-height)]"
     >
       <div
         aria-hidden="true"
@@ -42,7 +42,7 @@ export function HeroSection() {
 
       <Container className="relative max-w-6xl">
         <motion.div
-          className="grid min-h-[calc(100svh-var(--nav-height))] grid-cols-1 items-center gap-10 py-14 sm:gap-12 sm:py-16 md:grid-cols-[minmax(0,1fr)_auto] md:gap-10 md:py-20 lg:gap-14 lg:py-24 xl:py-28"
+          className="grid min-h-[calc(100svh-var(--nav-height)-var(--hero-work-peek))] grid-cols-1 items-center gap-10 pt-8 pb-4 sm:gap-12 sm:pt-10 sm:pb-5 md:grid-cols-[minmax(0,1fr)_auto] md:gap-10 md:pt-12 md:pb-6 lg:gap-14"
           variants={containerVariants}
           initial="hidden"
           animate="visible"

@@ -17,7 +17,8 @@ export function Navbar() {
 
     if (sections.length === 0) return;
 
-    const offset = 120;
+    const header = document.querySelector("header");
+    const offset = (header?.getBoundingClientRect().height ?? 96) + 16;
     let current: string = siteConfig.nav[0].id;
 
     for (const section of sections) {
@@ -52,7 +53,7 @@ export function Navbar() {
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:px-6 sm:pt-6">
       <nav
         aria-label="Main navigation"
-        className="pointer-events-auto w-full max-w-2xl lg:max-w-3xl"
+        className="pointer-events-auto w-full max-w-xl lg:max-w-2xl"
       >
         <div
           className={cn(

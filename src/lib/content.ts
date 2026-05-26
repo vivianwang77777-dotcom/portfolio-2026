@@ -31,6 +31,8 @@ export type ProjectSectionItem = {
   image?: string;
   /** 图片原始宽高比，如 "954/383" */
   imageAspect?: string;
+  /** 示意图建议 contain，避免 object-cover 裁切 */
+  imageFit?: "cover" | "contain";
   layout?: ProjectSectionItemLayout;
 };
 

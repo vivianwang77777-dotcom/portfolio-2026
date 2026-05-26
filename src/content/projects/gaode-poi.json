@@ -93,6 +93,7 @@
           "description": "为了提升内容消费效率，我们重新梳理整个页面结构。通过删减冗余模块、统一内容层级与建立标准化容器，形成「确认当下 → 横向比较 → 延伸探索」的信息流动路径。",
           "image": "/images/projects/gaode-poi/content-framework/content-framework.jpg",
           "imageAspect": "2936/1190",
+          "imageFit": "contain",
           "layout": "full-image"
         },
         {
@@ -100,6 +101,7 @@
           "description": "过去，不同内容模块拥有不同交互逻辑，用户需要不断切换页面与阅读模式。因此，我们建立统一沉浸式内容容器，通过统一 Feed 结构、沉浸式笔记流与一致化交互模式，提升内容浏览连续性。",
           "image": "/images/projects/gaode-poi/content-framework/immersive-experience.jpg",
           "imageAspect": "2936/1284",
+          "imageFit": "contain",
           "layout": "full-image"
         }
       ]
@@ -115,6 +117,7 @@
           "description": "重新定义 POI 首屏视觉结构。通过更具沉浸感的全屏头图与内容布局，强化地点氛围表达，提升用户进入页面后的第一感知体验。",
           "image": "/images/projects/gaode-poi/decision-experience/hero-visual.jpg",
           "imageAspect": "2936/1284",
+          "imageFit": "contain",
           "layout": "full-image"
         },
         {
@@ -122,13 +125,15 @@
           "description": "通过拟物化视觉表达与大尺寸食物展示，增强真实感与消费欲望，帮助用户快速建立“这个地方值得去”的消费直觉。",
           "image": "/images/projects/gaode-poi/decision-experience/food-visual.jpg",
           "imageAspect": "2936/1284",
+          "imageFit": "contain",
           "layout": "full-image"
         },
         {
           "title": "UPGC供给感知强化",
           "description": "通过分析小红书高互动内容封面的规律，从文案信息、视觉结构、排版布局、风格调性总结可被算法化的规律，提高封面吸引力",
           "image": "/images/projects/gaode-poi/decision-experience/cover-pic.jpg",
-          "imageAspect": "1908/954",
+          "imageAspect": "2936/1468",
+          "imageFit": "contain",
           "layout": "full-image"
         },
         {
@@ -136,6 +141,7 @@
           "description": "探索动态化内容表达方式。通过动态图片、模板化视觉体系与 AI 增强封面能力，强化地点氛围感与内容吸引力，提升用户停留与消费意愿。",
           "image": "/images/projects/gaode-poi/decision-experience/dynamic-cover.jpg",
           "imageAspect": "2041/1468",
+          "imageFit": "contain",
           "layout": "split"
         }
       ]
